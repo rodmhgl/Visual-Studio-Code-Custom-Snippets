@@ -1,0 +1,48 @@
+{
+/*
+	 // Place your snippets for PowerShell here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}
+*/
+
+"Catch O365 Errors": {
+	"prefix": "O365Error",
+	"body": [
+		"function $1 {",
+		"	param($2)",
+		"	$saved=$global:ErrorActionPreference",
+		"	$global:ErrorActionPreference='stop'",
+		"	Try {",
+		"		$3",
+		"	}",
+		"	Catch {",
+		"		Write-Error -Message \"$4 - $($_)\"",
+		"		Break",
+		"	}",
+		"	Finally {",
+		"		$global:ErrorActionPreference=$saved",
+		"		$5",
+		"	}",
+		"}"
+	],
+	"description": "Enabled Try / Catch / Finally using remote O365 commands"
+},
+
+"Log Error" : {
+	"prefix": "LogError",
+	"body": [
+		"Write-Error -Message \"$1 - $($_)\""
+	],
+	"description": "Adds Write-Error -Message"
+}
+
+}
